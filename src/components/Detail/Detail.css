@@ -1,0 +1,43 @@
+.Home .lander {
+    padding: 80px 10px;
+    text-align: center;
+  }
+  .Home .lander h1 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+  }
+  .Home .lander p {
+    color: black;
+  }
+  .detail-title{
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-style: italic;
+  }
+  .detail-desc{
+    font-size: .9rem;
+  }
+  .cart-button-detail{
+    font-size: 1rem;
+    padding: 1px 2px;
+    display: inline-block;
+    background-color: red;
+    padding: 5px 5px;
+    width: 18rem;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    font-weight: bold;
+  }
+  .cart-button-detail:hover{
+    background-color: brown;
+  }
+  .price{
+    background-color: green;
+    color: white;
+    display: inline-block;
+    font-size: .8rem;
+    width: 4rem;
+    font-weight: bold;
+    font-style: italic;
+  }
