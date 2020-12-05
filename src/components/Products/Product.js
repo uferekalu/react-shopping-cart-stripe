@@ -28,12 +28,12 @@ function Product({ onAddToCartClick, price, category, image, product }) {
             </Row>
             <Row>
                 <Col xs={12} md={12}>
-                    <Button
-                        onClick={onAddToCartClick}
-                        className="cart-button"
-                    >
-                    ADD TO CART    
-                    </Button>
+                        <Button
+                            onClick={onAddToCartClick}
+                            className="cart-button"
+                        >
+                        ADD TO CART    
+                        </Button>
                 </Col>
             </Row>
         </Col>

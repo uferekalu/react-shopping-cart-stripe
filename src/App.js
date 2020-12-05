@@ -8,6 +8,7 @@ import {
 import './App.css';
 import ProductList from './components/Products/ProductList';
 import Detail from './components/Detail/Detail';
+import Cart from './components/Cart/Cart';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={ProductList}/>
         <Route path="/product/:productId" exact component={Detail} />
+        <Route path="/cart" exact component={Cart} />
       </Switch>
     </Router>
   );
