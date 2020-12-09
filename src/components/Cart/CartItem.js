@@ -2,7 +2,8 @@ import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-function CartItem ({ title, image, cost, quantity, onDecrease, onIncrease, onRemoveProduct,  }) {
+function CartItem ({ title, image, cost, quantity, onRemoveProduct, onDecrease, onIncrease }) {
+    
     return (
         <>
                 <Col xs={6} md={6} className="mb-5">

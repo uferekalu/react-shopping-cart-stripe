@@ -3,7 +3,7 @@ import CartItem from './CartItem';
 import './Cart.css';
 import { Container, Row, Col, Button, Badge } from 'react-bootstrap';
 
-function Cart ({  itemsInCart, totalCost, onClearCartClick, onHandleCheckout }) {
+function Cart ({  itemsInCart, totalCost, onClearCartClick, onHandleCheckout, onRemoveProduct }) {
     
     return (
         <Container className="product">
@@ -12,7 +12,7 @@ function Cart ({  itemsInCart, totalCost, onClearCartClick, onHandleCheckout }) 
                     <h3 className="cart-heading-text">My Bag</h3>
                 </Col>
                 <Col xs={6} md={6} className="cart-heading">
-                    <h3 className="cart-heading-text">Total: # items</h3>
+                    <h3 className="cart-heading-text">Total: {itemsInCart.length} items</h3>
                 </Col>
             </Row>
             {itemsInCart.length > 0 ? (
@@ -24,6 +24,9 @@ function Cart ({  itemsInCart, totalCost, onClearCartClick, onHandleCheckout }) 
                             image={item.image}
                             cost={item.price * item.quantity}
                             quantity={item.quantity}
+                            onIncrease={() => (item.quantity++)}
+                            onDecrease={() => (item.quantity > 1 ? item.quantity-- : item.quantity)}
+                            onRemoveProduct={onRemoveProduct}
                         />
                     ))}
                         <Col xs={6} md={6}>

@@ -8,7 +8,12 @@ function ProductList () {
     const [product, setProduct] = useState([]);
     const [itemsInCart, setItemsInCart] = useState([]);
 
+    // let localCart = localStorage.getItem("itemsInCart");
+
     useEffect(() => {
+        // localCart = JSON.parse(localCart);
+        // if (localCart) setItemsInCart(localCart)
+
         let mounted = true;
         fetch('https://fakestoreapi.com/products/')
             .then(response => response.json())
@@ -19,6 +24,34 @@ function ProductList () {
             })
             return () => mounted = false;
     }, []);
+
+    
+
+    // const handleAddToCartClick = (item) => {
+    //     //create a copy of our cart state, avoid overwriting existing state
+    //     let cartCopy = [...itemsInCart];
+
+    //     //assuming we have an ID field in our item
+    //     let {ID} = item;
+
+    //     //look for item in cart array
+    //     let existingItem = cartCopy.find(cartItem => cartItem.ID === ID);
+
+    //     //if item already exists
+    //     if(existingItem) {
+    //         existingItem.quantity += item.quantity //update item
+    //     } else {
+    //         //if item doesn't exist, simply add it
+    //         cartCopy.push(item)
+    //     }
+
+    //     //update app state
+    //     setItemsInCart(cartCopy)
+
+    //     //make cart a string and store in local space
+    //     let stringCart = JSON.stringify(cartCopy);
+    //     localStorage.setItem("itemsInCart", stringCart)
+    // }
 
     const handleAddToCartClick = id => {
         setItemsInCart(itemsInCart => {
@@ -36,17 +69,37 @@ function ProductList () {
           const item = product.find(item => item.id === id);
           return [...itemsInCart, { ...item, quantity: 1 }];
         });
+
+        let stringCart = JSON.stringify(itemsInCart);
+        localStorage.setItem("itemsInCart", stringCart)
       };
-    
+
+
       const totalCost = itemsInCart.reduce(
         (acc, item) => acc + item.price * item.quantity,
         0
       );
-    
+      
+      const itemCount = itemsInCart.reduce(
+        (acc, item) => acc + item.quantity,
+        0
+      );
+
+    // const handleRemoveItem = id => {
+    //     let cartCopy = [...itemsInCart]
+
+    //     cartCopy = cartCopy.filter(item => item.id !== id)
+
+    //     setItemsInCart(cartCopy);
+    // }
 
     return (
         <Container className="product">
-            <Cart itemsInCart={itemsInCart} totalCost={totalCost} />
+            <Cart 
+                itemsInCart={itemsInCart} 
+                totalCost={totalCost} 
+                itemCount={itemCount}
+            />
 
             <h3 className="product-list-caption mt-5">Product List</h3>
             <h4 className="product-list-text">There are {product.length} Products</h4>
