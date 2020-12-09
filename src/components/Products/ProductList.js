@@ -85,13 +85,14 @@ function ProductList () {
         0
       );
 
-    // const handleRemoveItem = id => {
-    //     let cartCopy = [...itemsInCart]
+    const handleRemoveItem = id => {
+        console.log("you clicked me");
+        let cartCopy = [...itemsInCart]
 
-    //     cartCopy = cartCopy.filter(item => item.id !== id)
+        cartCopy = cartCopy.filter(item => item.id !== id)
 
-    //     setItemsInCart(cartCopy);
-    // }
+        setItemsInCart(cartCopy);
+    }
 
     return (
         <Container className="product">
@@ -99,6 +100,7 @@ function ProductList () {
                 itemsInCart={itemsInCart} 
                 totalCost={totalCost} 
                 itemCount={itemCount}
+                onRemoveProduct={() => handleRemoveItem(itemsInCart.map(item => item.id))}
             />
 
             <h3 className="product-list-caption mt-5">Product List</h3>
